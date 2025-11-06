@@ -16,10 +16,18 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from models.baseline import get_baseline_models
 from models.linear_models import get_linear_models
-from models.tree_models import get_tree_models
 from models.ensemble_models import WeightedEnsemble, StackingEnsemble
 from models.trainer import ModelTrainer
 from models.evaluator import ModelEvaluator
+
+# Try to import tree models, handle if unavailable
+try:
+    from models.tree_models import get_tree_models
+    HAS_TREE_MODELS = True
+except ImportError as e:
+    print(f"⚠️  Warning: Tree models not fully available - {e}")
+    print("   Continuing with baseline and linear models only...")
+    HAS_TREE_MODELS = False
 
 
 def load_processed_data():
@@ -31,8 +39,8 @@ def load_processed_data():
     print("Loading processed data...")
 
     # For now, use placeholder - will be updated by FeatureEngineer
-    train_path = Path(__file__).parent.parent / 'data' / 'train_processed.csv'
-    val_path = Path(__file__).parent.parent / 'data' / 'val_processed.csv'
+    train_path = Path(__file__).parent.parent / 'data' / 'processed' / 'train_processed.csv'
+    val_path = Path(__file__).parent.parent / 'data' / 'processed' / 'val_processed.csv'
 
     if train_path.exists() and val_path.exists():
         train_df = pd.read_csv(train_path)
@@ -88,8 +96,12 @@ def train_linear_models(trainer, X_train, y_train, X_val, y_val):
 
 def train_tree_models(trainer, X_train, y_train, X_val, y_val):
     """Train tree-based models."""
+    if not HAS_TREE_MODELS:
+        print("⚠️  Skipping tree models (dependencies not available)")
+        return {}
+    
     print("\n" + "="*80)
-    print("PHASE 3: TREE-BASED MODELS")
+    print("TRAINING TREE-BASED MODELS")
     print("="*80)
 
     tree_models = get_tree_models()

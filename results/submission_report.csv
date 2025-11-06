@@ -1,0 +1,2 @@
+Model,Validation_RMSPE,Validation_RMSE,Validation_MAE,Validation_R2,Test_Predictions,Mean_Sales,Median_Sales,Min_Sales,Max_Sales,Std_Sales,Submission_File
+XGBoost_DeepTrees,0.01075676402212016,90.32749189263411,37.49380383537467,0.9991542260500434,41088,7005.7827,6393.952,774.8958,32454.635,3060.4897,submission_final.csv

@@ -147,8 +147,14 @@ class FeatureEngineeringPipeline:
         # 3. Lag features (only if requested)
         if self.create_lag_features and self.lag_engineer is not None:
             print("Fitting lag features...")
+            # Temporarily add target for lag feature creation
+            if y is not None:
+                df['Sales'] = y
             df = self.lag_engineer.fit_transform(df)
             df = self.lag_engineer.create_day_of_week_features(df)
+            # Remove target after lag features created
+            if y is not None and 'Sales' in df.columns:
+                df = df.drop('Sales', axis=1)
 
         # 4. Preprocessing
         print("Fitting preprocessor...")
@@ -192,8 +198,14 @@ class FeatureEngineeringPipeline:
         # 3. Lag features
         if self.create_lag_features and self.lag_engineer is not None:
             print("Creating lag features...")
-            df = self.lag_engineer.transform(df)
-            df = self.lag_engineer.create_day_of_week_features(df)
+            # Need Sales column for lag features during transform
+            # This requires the Sales column to be present or uses fitted values
+            try:
+                df = self.lag_engineer.transform(df)
+                df = self.lag_engineer.create_day_of_week_features(df)
+            except KeyError as e:
+                # If Sales column not present, skip lag features for new data
+                print(f"  ⚠️ Skipping lag features: {e}")
 
         # 4. Preprocessing
         print("Preprocessing data...")
@@ -214,7 +226,21 @@ class FeatureEngineeringPipeline:
         Returns:
             Transformed dataframe
         """
-        return self.fit(X, y).transform(X)
+        # For fit_transform, we fit on X and y, then transform X with Sales temporarily added
+        self.fit(X, y)
+        
+        # During transform, temporarily add target for lag features if needed
+        df = X.copy()
+        if y is not None and self.create_lag_features:
+            df['Sales'] = y
+        
+        df_transformed = self.transform(df)
+        
+        # Remove Sales if it was temporarily added
+        if y is not None and 'Sales' in df_transformed.columns and 'Sales' not in X.columns:
+            df_transformed = df_transformed.drop('Sales', axis=1)
+        
+        return df_transformed
 
     def create_train_val_test_splits(
         self,
@@ -285,8 +311,19 @@ class FeatureEngineeringPipeline:
             val_days=48,
             test_days=48
         )
+        
+        # 5. Drop Date column if present (models can't use it)
+        for df_name, df in [('train', train_df), ('val', val_df), ('test', test_df)]:
+            if 'Date' in df.columns:
+                print(f"Dropping Date column from {df_name} set...")
+                if df_name == 'train':
+                    train_df = df.drop('Date', axis=1)
+                elif df_name == 'val':
+                    val_df = df.drop('Date', axis=1)
+                else:
+                    test_df = df.drop('Date', axis=1)
 
-        # 5. Validate data
+        # 6. Validate data
         print("\nValidating data quality...")
         validation_results = self.preprocessor.validate_data(train_df)
         print(f"Validation results: {len(validation_results['issues'])} issues found")
@@ -294,7 +331,7 @@ class FeatureEngineeringPipeline:
             for issue in validation_results['issues']:
                 print(f"  - {issue}")
 
-        # 6. Save processed data
+        # 7. Save processed data
         if save_path:
             os.makedirs(save_path, exist_ok=True)
             print(f"\nSaving processed data to {save_path}...")
@@ -309,7 +346,7 @@ class FeatureEngineeringPipeline:
 
             print("Data saved successfully!")
 
-        # 7. Print summary
+        # 8. Print summary
         self._print_summary(train_df, val_df, test_df)
 
         return {

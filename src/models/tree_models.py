@@ -8,20 +8,21 @@ from typing import Dict, Any, Optional
 from sklearn.ensemble import RandomForestRegressor
 import warnings
 
-# Try to import XGBoost and LightGBM (may not be installed)
+# Try to import XGBoost and LightGBM (may not be installed or have missing dependencies)
+XGBOOST_AVAILABLE = False
+LIGHTGBM_AVAILABLE = False
+
 try:
     import xgboost as xgb
     XGBOOST_AVAILABLE = True
-except ImportError:
-    XGBOOST_AVAILABLE = False
-    warnings.warn("XGBoost not available. Install with: pip install xgboost")
+except (ImportError, OSError, Exception) as e:
+    warnings.warn(f"XGBoost not available: {e}. Install with: pip install xgboost. On macOS: brew install libomp")
 
 try:
     import lightgbm as lgb
     LIGHTGBM_AVAILABLE = True
-except ImportError:
-    LIGHTGBM_AVAILABLE = False
-    warnings.warn("LightGBM not available. Install with: pip install lightgbm")
+except (ImportError, OSError, Exception) as e:
+    warnings.warn(f"LightGBM not available: {e}. Install with: pip install lightgbm")
 
 
 class RandomForestModel:

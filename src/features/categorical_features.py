@@ -142,6 +142,17 @@ class CategoricalFeatureEngineer:
             )
             df['StoreType_Assortment_Encoded'] = df['StoreType_Assortment'].factorize()[0]
             created_features.append('StoreType_Assortment_Encoded')
+        
+        # Drop original categorical columns (keep only encoded versions)
+        cols_to_drop = []
+        for col in self.categorical_columns:
+            if col in df.columns:
+                cols_to_drop.append(col)
+        # Also drop intermediate columns
+        if 'StoreType_Assortment' in df.columns:
+            cols_to_drop.append('StoreType_Assortment')
+        
+        df = df.drop(columns=cols_to_drop, errors='ignore')
 
         self.feature_names = created_features
         return df

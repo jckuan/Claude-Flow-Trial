@@ -1,0 +1,99 @@
+.
+├── CLAUDE.md
+├── DOCUMENTATION_GUIDE.md
+├── PHASE2_COMPLETION.md
+├── PROJECT_COMPLETION_SUMMARY.md
+├── PROJECT_STRUCTURE.txt
+├── README.md
+├── README_FEATURES.md
+├── TESTING_SUMMARY.md
+├── analysis
+│   ├── ENSEMBLE_RESULTS.md
+│   ├── FINAL_PROJECT_SUMMARY.md
+│   └── XGBOOST_TUNING_RESULTS.md
+├── claude-flow
+├── coordination
+│   ├── memory_bank
+│   ├── orchestration
+│   └── subtasks
+├── data
+│   ├── processed
+│   └── rossmann-store-sales
+├── docs
+│   ├── FEATURE_ENGINEERING.md
+│   ├── METHODOLOGY.md
+│   ├── MODEL_ARCHITECTURE_SUMMARY.md
+│   ├── PHASE3_COMPLETION_REPORT.md
+│   ├── RESULTS.md
+│   ├── REVIEW_REPORT.md
+│   ├── eda_analysis.json
+│   ├── eda_key_insights.md
+│   ├── eda_report.md
+│   ├── model_comparison.md
+│   ├── phase1_summary.md
+│   └── visualizations
+├── examples
+│   └── feature_engineering_example.py
+├── memory
+│   ├── agents
+│   ├── claude-flow@alpha-data.json
+│   ├── feature_engineering_summary.json
+│   └── sessions
+├── models
+│   ├── ensemble_comparison_results.csv
+│   ├── lightgbm_test.pkl
+│   ├── random_forest_best.pkl
+│   ├── xgboost_aggressive.pkl
+│   ├── xgboost_baseline.pkl
+│   ├── xgboost_deeptrees.pkl
+│   ├── xgboost_moretrees.pkl
+│   ├── xgboost_regularized.pkl
+│   ├── xgboost_test.pkl
+│   └── xgboost_tuning_results.csv
+├── notebooks
+│   └── 01_exploratory_analysis.ipynb
+├── pytest.ini
+├── requirements.txt
+├── results
+│   ├── submission.csv
+│   ├── submission_final.csv
+│   └── submission_report.csv
+├── rossmann_eda.ipynb
+├── run_mlestar.sh
+├── scripts
+│   ├── create_ensemble.py
+│   ├── evaluate_model.py
+│   ├── generate_final_submission.py
+│   ├── predict.py
+│   ├── quick_train_predict.py
+│   ├── run_eda.py
+│   ├── test_gradient_boosting.py
+│   ├── train_model.py
+│   └── tune_xgboost.py
+├── src
+│   ├── __init__.py
+│   ├── data
+│   ├── evaluation
+│   ├── features
+│   ├── models
+│   ├── run_feature_pipeline.py
+│   ├── train_models.py
+│   └── utils
+├── tests
+│   ├── INDEX.md
+│   ├── README.md
+│   ├── TESTING_GUIDE.md
+│   ├── TEST_REPORT.md
+│   ├── __init__.py
+│   ├── conftest.py
+│   ├── fixtures
+│   ├── test_data_loader.py
+│   ├── test_data_loading.py
+│   ├── test_features.py
+│   ├── test_models.py
+│   ├── test_pipeline.py
+│   └── test_preprocessing.py
+├── training_log.txt
+└── training_output.log
+
+26 directories, 70 files

@@ -1,0 +1,309 @@
+================================================================================
+ROSSMANN SALES PREDICTION - MODEL TRAINING
+================================================================================
+Loading processed data...
+Training set: (755389, 142)
+Validation set: (43065, 142)
+
+================================================================================
+PHASE 1: BASELINE MODELS
+================================================================================
+
+============================================================
+Training: mean
+============================================================
+Train RMSE: 3101.30 | MAE: 2287.47 | R²: 0.0000
+Val   RMSE: 3155.24 | MAE: 2258.64 | R²: -0.0320
+Training time: 0.00s
+
+============================================================
+Training: median
+============================================================
+Train RMSE: 3156.94 | MAE: 2234.75 | R²: -0.0362
+Val   RMSE: 3310.51 | MAE: 2317.38 | R²: -0.1361
+Training time: 0.01s
+
+============================================================
+Training: linear
+============================================================
+❌ Error training linear: could not convert string to float: '2013-01-01'
+
+================================================================================
+MODEL COMPARISON SUMMARY
+================================================================================
+ Model  Train_RMSE   Train_MAE  Train_R2    Val_RMSE     Val_MAE    Val_R2  Training_Time
+  mean 3101.298798 2287.469583  0.000000 3155.240144 2258.639750 -0.031999       0.002236
+median 3156.941872 2234.747077 -0.036206 3310.512595 2317.375432 -0.136069       0.010444
+================================================================================
+
+
+================================================================================
+PHASE 2: LINEAR MODELS
+================================================================================
+
+============================================================
+Training: linear_regression
+============================================================
+❌ Error training linear_regression: could not convert string to float: '2013-01-01'
+
+============================================================
+Training: ridge_0.1
+============================================================
+❌ Error training ridge_0.1: could not convert string to float: '2013-01-01'
+
+============================================================
+Training: ridge_1.0
+============================================================
+❌ Error training ridge_1.0: could not convert string to float: '2013-01-01'
+
+============================================================
+Training: ridge_10.0
+============================================================
+❌ Error training ridge_10.0: could not convert string to float: '2013-01-01'
+
+============================================================
+Training: ridge_100.0
+============================================================
+❌ Error training ridge_100.0: could not convert string to float: '2013-01-01'
+
+============================================================
+Training: lasso_0.1
+============================================================
+❌ Error training lasso_0.1: could not convert string to float: '2013-01-01'
+
+============================================================
+Training: lasso_1.0
+============================================================
+❌ Error training lasso_1.0: could not convert string to float: '2013-01-01'
+
+============================================================
+Training: lasso_10.0
+============================================================
+❌ Error training lasso_10.0: could not convert string to float: '2013-01-01'
+
+============================================================
+Training: elasticnet_0.5
+============================================================
+❌ Error training elasticnet_0.5: could not convert string to float: '2013-01-01'
+
+============================================================
+Training: elasticnet_0.7
+============================================================
+❌ Error training elasticnet_0.7: could not convert string to float: '2013-01-01'
+
+============================================================
+Training: elasticnet_0.9
+============================================================
+❌ Error training elasticnet_0.9: could not convert string to float: '2013-01-01'
+
+================================================================================
+MODEL COMPARISON SUMMARY
+================================================================================
+Empty DataFrame
+Columns: []
+Index: []
+================================================================================
+
+
+================================================================================
+TRAINING TREE-BASED MODELS
+================================================================================
+
+============================================================
+Training: random_forest_100
+============================================================
+❌ Error training random_forest_100: could not convert string to float: '2013-01-01'
+
+============================================================
+Training: random_forest_200
+============================================================
+❌ Error training random_forest_200: could not convert string to float: '2013-01-01'
+
+================================================================================
+MODEL COMPARISON SUMMARY
+================================================================================
+Empty DataFrame
+Columns: []
+Index: []
+================================================================================
+
+
+================================================================================
+PHASE 4: ENSEMBLE MODELS
+================================================================================
+
+Training Weighted Ensemble (uniform)...
+
+============================================================
+Training: WeightedEnsemble_Uniform
+============================================================
+❌ Error training WeightedEnsemble_Uniform: could not convert string to float: '2013-01-01'
+
+Training Stacking Ensemble...
+
+============================================================
+Training: StackingEnsemble
+============================================================
+Generating meta-features from model_0...
+/Users/jckuan/Dev/MLE-STAR-trial/src/models/tree_models.py:19: UserWarning: XGBoost not available: 
+XGBoost Library (libxgboost.dylib) could not be loaded.
+Likely causes:
+  * OpenMP runtime is not installed
+    - vcomp140.dll or libgomp-1.dll for Windows
+    - libomp.dylib for Mac OSX
+    - libgomp.so for Linux and other UNIX-like OSes
+    Mac OSX users: Run `brew install libomp` to install OpenMP runtime.
+
+  * You are running 32-bit Python on a 64-bit OS
+
+Error message(s): ["dlopen(/Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/xgboost/lib/libxgboost.dylib, 0x0006): Library not loaded: @rpath/libomp.dylib\n  Referenced from: <B111F8D5-6AC6-3245-A6B5-94693F6992AB> /Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/xgboost/lib/libxgboost.dylib\n  Reason: tried: '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file)"]
+. Install with: pip install xgboost. On macOS: brew install libomp
+  warnings.warn(f"XGBoost not available: {e}. Install with: pip install xgboost. On macOS: brew install libomp")
+/Users/jckuan/Dev/MLE-STAR-trial/src/models/tree_models.py:19: UserWarning: XGBoost not available: 
+XGBoost Library (libxgboost.dylib) could not be loaded.
+Likely causes:
+  * OpenMP runtime is not installed
+    - vcomp140.dll or libgomp-1.dll for Windows
+    - libomp.dylib for Mac OSX
+    - libgomp.so for Linux and other UNIX-like OSes
+    Mac OSX users: Run `brew install libomp` to install OpenMP runtime.
+
+  * You are running 32-bit Python on a 64-bit OS
+
+Error message(s): ["dlopen(/Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/xgboost/lib/libxgboost.dylib, 0x0006): Library not loaded: @rpath/libomp.dylib\n  Referenced from: <B111F8D5-6AC6-3245-A6B5-94693F6992AB> /Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/xgboost/lib/libxgboost.dylib\n  Reason: tried: '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file)"]
+. Install with: pip install xgboost. On macOS: brew install libomp
+  warnings.warn(f"XGBoost not available: {e}. Install with: pip install xgboost. On macOS: brew install libomp")
+/Users/jckuan/Dev/MLE-STAR-trial/src/models/tree_models.py:19: UserWarning: XGBoost not available: 
+XGBoost Library (libxgboost.dylib) could not be loaded.
+Likely causes:
+  * OpenMP runtime is not installed
+    - vcomp140.dll or libgomp-1.dll for Windows
+    - libomp.dylib for Mac OSX
+    - libgomp.so for Linux and other UNIX-like OSes
+    Mac OSX users: Run `brew install libomp` to install OpenMP runtime.
+
+  * You are running 32-bit Python on a 64-bit OS
+
+Error message(s): ["dlopen(/Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/xgboost/lib/libxgboost.dylib, 0x0006): Library not loaded: @rpath/libomp.dylib\n  Referenced from: <B111F8D5-6AC6-3245-A6B5-94693F6992AB> /Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/xgboost/lib/libxgboost.dylib\n  Reason: tried: '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file)"]
+. Install with: pip install xgboost. On macOS: brew install libomp
+  warnings.warn(f"XGBoost not available: {e}. Install with: pip install xgboost. On macOS: brew install libomp")
+/Users/jckuan/Dev/MLE-STAR-trial/src/models/tree_models.py:25: UserWarning: LightGBM not available: dlopen(/Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.dylib, 0x0006): Library not loaded: @rpath/libomp.dylib
+  Referenced from: <D44045CD-B874-3A27-9A61-F131D99AACE4> /Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.dylib
+  Reason: tried: '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/local/lib/libomp/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/local/lib/libomp/libomp.dylib' (no such file), '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/local/lib/libomp/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/local/lib/libomp/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file). Install with: pip install lightgbm
+  warnings.warn(f"LightGBM not available: {e}. Install with: pip install lightgbm")
+/Users/jckuan/Dev/MLE-STAR-trial/src/models/tree_models.py:25: UserWarning: LightGBM not available: dlopen(/Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.dylib, 0x0006): Library not loaded: @rpath/libomp.dylib
+  Referenced from: <D44045CD-B874-3A27-9A61-F131D99AACE4> /Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.dylib
+  Reason: tried: '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/local/lib/libomp/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/local/lib/libomp/libomp.dylib' (no such file), '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/local/lib/libomp/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/local/lib/libomp/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file). Install with: pip install lightgbm
+  warnings.warn(f"LightGBM not available: {e}. Install with: pip install lightgbm")
+/Users/jckuan/Dev/MLE-STAR-trial/src/models/tree_models.py:25: UserWarning: LightGBM not available: dlopen(/Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.dylib, 0x0006): Library not loaded: @rpath/libomp.dylib
+  Referenced from: <D44045CD-B874-3A27-9A61-F131D99AACE4> /Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.dylib
+  Reason: tried: '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/local/lib/libomp/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/local/lib/libomp/libomp.dylib' (no such file), '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/local/lib/libomp/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/local/lib/libomp/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file). Install with: pip install lightgbm
+  warnings.warn(f"LightGBM not available: {e}. Install with: pip install lightgbm")
+/Users/jckuan/Dev/MLE-STAR-trial/src/models/tree_models.py:19: UserWarning: XGBoost not available: 
+XGBoost Library (libxgboost.dylib) could not be loaded.
+Likely causes:
+  * OpenMP runtime is not installed
+    - vcomp140.dll or libgomp-1.dll for Windows
+    - libomp.dylib for Mac OSX
+    - libgomp.so for Linux and other UNIX-like OSes
+    Mac OSX users: Run `brew install libomp` to install OpenMP runtime.
+
+  * You are running 32-bit Python on a 64-bit OS
+
+Error message(s): ["dlopen(/Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/xgboost/lib/libxgboost.dylib, 0x0006): Library not loaded: @rpath/libomp.dylib\n  Referenced from: <B111F8D5-6AC6-3245-A6B5-94693F6992AB> /Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/xgboost/lib/libxgboost.dylib\n  Reason: tried: '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file)"]
+. Install with: pip install xgboost. On macOS: brew install libomp
+  warnings.warn(f"XGBoost not available: {e}. Install with: pip install xgboost. On macOS: brew install libomp")
+/Users/jckuan/Dev/MLE-STAR-trial/src/models/tree_models.py:25: UserWarning: LightGBM not available: dlopen(/Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.dylib, 0x0006): Library not loaded: @rpath/libomp.dylib
+  Referenced from: <D44045CD-B874-3A27-9A61-F131D99AACE4> /Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.dylib
+  Reason: tried: '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/local/lib/libomp/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/local/lib/libomp/libomp.dylib' (no such file), '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/local/lib/libomp/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/local/lib/libomp/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file). Install with: pip install lightgbm
+  warnings.warn(f"LightGBM not available: {e}. Install with: pip install lightgbm")
+/Users/jckuan/Dev/MLE-STAR-trial/src/models/tree_models.py:19: UserWarning: XGBoost not available: 
+XGBoost Library (libxgboost.dylib) could not be loaded.
+Likely causes:
+  * OpenMP runtime is not installed
+    - vcomp140.dll or libgomp-1.dll for Windows
+    - libomp.dylib for Mac OSX
+    - libgomp.so for Linux and other UNIX-like OSes
+    Mac OSX users: Run `brew install libomp` to install OpenMP runtime.
+
+  * You are running 32-bit Python on a 64-bit OS
+
+Error message(s): ["dlopen(/Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/xgboost/lib/libxgboost.dylib, 0x0006): Library not loaded: @rpath/libomp.dylib\n  Referenced from: <B111F8D5-6AC6-3245-A6B5-94693F6992AB> /Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/xgboost/lib/libxgboost.dylib\n  Reason: tried: '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file)"]
+. Install with: pip install xgboost. On macOS: brew install libomp
+  warnings.warn(f"XGBoost not available: {e}. Install with: pip install xgboost. On macOS: brew install libomp")
+/Users/jckuan/Dev/MLE-STAR-trial/src/models/tree_models.py:25: UserWarning: LightGBM not available: dlopen(/Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.dylib, 0x0006): Library not loaded: @rpath/libomp.dylib
+  Referenced from: <D44045CD-B874-3A27-9A61-F131D99AACE4> /Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.dylib
+  Reason: tried: '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/local/lib/libomp/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/local/lib/libomp/libomp.dylib' (no such file), '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/local/lib/libomp/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/local/lib/libomp/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file). Install with: pip install lightgbm
+  warnings.warn(f"LightGBM not available: {e}. Install with: pip install lightgbm")
+/Users/jckuan/Dev/MLE-STAR-trial/src/models/tree_models.py:19: UserWarning: XGBoost not available: 
+XGBoost Library (libxgboost.dylib) could not be loaded.
+Likely causes:
+  * OpenMP runtime is not installed
+    - vcomp140.dll or libgomp-1.dll for Windows
+    - libomp.dylib for Mac OSX
+    - libgomp.so for Linux and other UNIX-like OSes
+    Mac OSX users: Run `brew install libomp` to install OpenMP runtime.
+
+  * You are running 32-bit Python on a 64-bit OS
+
+Error message(s): ["dlopen(/Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/xgboost/lib/libxgboost.dylib, 0x0006): Library not loaded: @rpath/libomp.dylib\n  Referenced from: <B111F8D5-6AC6-3245-A6B5-94693F6992AB> /Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/xgboost/lib/libxgboost.dylib\n  Reason: tried: '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file)"]
+. Install with: pip install xgboost. On macOS: brew install libomp
+  warnings.warn(f"XGBoost not available: {e}. Install with: pip install xgboost. On macOS: brew install libomp")
+/Users/jckuan/Dev/MLE-STAR-trial/src/models/tree_models.py:25: UserWarning: LightGBM not available: dlopen(/Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.dylib, 0x0006): Library not loaded: @rpath/libomp.dylib
+  Referenced from: <D44045CD-B874-3A27-9A61-F131D99AACE4> /Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.dylib
+  Reason: tried: '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/local/lib/libomp/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/local/lib/libomp/libomp.dylib' (no such file), '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/local/lib/libomp/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/local/lib/libomp/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file), '/opt/homebrew/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libomp.dylib' (no such file). Install with: pip install lightgbm
+  warnings.warn(f"LightGBM not available: {e}. Install with: pip install lightgbm")
+Traceback (most recent call last):
+  File "/Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'rmse'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/jckuan/Dev/MLE-STAR-trial/src/train_models.py", line 275, in main
+    best_name, best_model, final_results = evaluate_and_save_results(
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jckuan/Dev/MLE-STAR-trial/src/train_models.py", line 208, in evaluate_and_save_results
+    evaluator.create_evaluation_report(history_df)
+  File "/Users/jckuan/Dev/MLE-STAR-trial/src/models/evaluator.py", line 400, in create_evaluation_report
+    best_rmse = comparison_df.loc[comparison_df['rmse'].idxmin()]
+                                  ~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/pandas/core/frame.py", line 4113, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jckuan/Dev/MLE-STAR-trial/venv/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'rmse'
+Generating meta-features from model_1...
+Generating meta-features from SimpleLinearBaseline...
+❌ Error training StackingEnsemble: could not convert string to float: '2013-01-01'
+
+================================================================================
+FINAL EVALUATION
+================================================================================
+
+🏆 Best Model: mean
+
+============================================================
+Evaluation Metrics: mean
+============================================================
+RMSE (Root Mean Squared Error): 3155.24
+MAE  (Mean Absolute Error):     2258.64
+MAPE (Mean Absolute % Error):   33.67%
+R²   (R-squared):               -0.0320
+Residual Std Dev:               3105.94
+============================================================
+
+
+Creating visualizations...
+✅ Plot saved to: /Users/jckuan/Dev/MLE-STAR-trial/docs/visualizations/mean_predictions.png
+✅ Plot saved to: /Users/jckuan/Dev/MLE-STAR-trial/docs/visualizations/mean_residuals.png
+✅ Plot saved to: /Users/jckuan/Dev/MLE-STAR-trial/docs/visualizations/model_comparison_rmse.png
+
+❌ Unexpected error: 'rmse'
