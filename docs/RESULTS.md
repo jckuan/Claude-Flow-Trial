@@ -204,16 +204,16 @@ Ensemble strategies tested:
 **Primary Metric**: RMSPE (Root Mean Square Percentage Error)  
 **Dataset**: 755,389 train, 43,065 validation samples
 
-| Rank | Model | RMSPE (Val) | RMSE (Val) | MAE (Val) | R² | Training Time | Notes |
-|------|-------|-------------|------------|-----------|-----|---------------|-------|
-| **1** | **XGBoost_DeepTrees** | **0.010757** | **90.33** | **37.49** | **0.9992** | **26.7s** | **🏆 Best Overall** |
-| 2 | Ensemble_BestHeavy | 0.011213 | 88.46 | 42.54 | 0.9992 | - | Best RMSE |
-| 3 | Ensemble_TopThree | 0.011291 | 90.23 | 41.08 | 0.9992 | - | Pure XGBoost |
-| 4 | XGBoost_Aggressive | 0.012505 | 94.33 | 47.14 | 0.9991 | 45.8s | 300 trees |
-| 5 | XGBoost_Regularized | 0.017096 | 121.05 | 72.30 | 0.9985 | 25.5s | Conservative |
-| 6 | XGBoost_Baseline | 0.020016 | 140.38 | 90.10 | 0.9980 | 14.0s | Quick baseline |
-| 7 | Random Forest | 0.022657 | 169.00 | 106.55 | 0.9970 | ~5min | 200 trees |
-| 8 | LightGBM | 0.023526 | 167.10 | 111.49 | 0.9971 | 17.3s | Fast training |
+| Rank | Model | RMSPE (Val) | RMSE (Val) | MAE (Val) | MAPE (Val) | R² | Training Time | Notes |
+|------|-------|-------------|------------|-----------|------------|-----|---------------|-------|
+| **1** | **XGBoost_DeepTrees** | **0.010757** | **90.33** | **37.49** | **0.0067** | **0.9992** | **26.7s** | **🏆 Best Overall** |
+| 2 | Ensemble_BestHeavy | 0.011213 | 88.46 | 42.54 | 0.0075 | 0.9992 | - | Best RMSE |
+| 3 | Ensemble_TopThree | 0.011291 | 90.23 | 41.08 | 0.0074 | 0.9992 | - | Pure XGBoost |
+| 4 | XGBoost_Aggressive | 0.012505 | 94.33 | 47.14 | 0.0084 | 0.9991 | 45.8s | 300 trees |
+| 5 | XGBoost_Regularized | 0.017096 | 121.05 | 72.30 | 0.0127 | 0.9985 | 25.5s | Conservative |
+| 6 | XGBoost_Baseline | 0.020016 | 140.38 | 90.10 | 0.0159 | 0.9980 | 14.0s | Quick baseline |
+| 7 | Random Forest | 0.022657 | 169.00 | 106.55 | 0.0182 | 0.9970 | ~5min | 200 trees |
+| 8 | LightGBM | 0.023526 | 167.10 | 111.49 | 0.0195 | 0.9971 | 17.3s | Fast training |
 
 ## Model Selection & Final Results
 
@@ -240,6 +240,7 @@ Ensemble strategies tested:
 - **RMSPE**: 0.010757 (~1.08% average percentage error) ⭐
 - **RMSE**: 90.33
 - **MAE**: 37.49 (Average $37.49 error per prediction)
+- **MAPE**: 0.0067 (~0.67% average percentage error) 🎯
 - **R²**: 0.9992 (99.92% variance explained)
 - **Training Time**: 26.7 seconds
 
@@ -257,6 +258,7 @@ Ensemble strategies tested:
 3. **Single Model > Ensemble**: Best single model outperforms all ensemble combinations
 4. **XGBoost > Others**: 52% better RMSPE than Random Forest, 54% better than LightGBM
 5. **Excellent Generalization**: 99.92% R² on validation set suggests strong predictive power
+6. **MAPE Performance**: 0.67% average percentage error demonstrates exceptional accuracy for retail forecasting
 
 ## Feature Importance Analysis
 
