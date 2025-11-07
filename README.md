@@ -23,18 +23,64 @@ This project predicts sales for 1,115 Rossmann drugstores across Germany using h
 
 ---
 
-## 📖 Documentation
+## Quick Start Guide
 
-**New to this project?** Start with our comprehensive documentation guide:
+**Three Essential Documents**:
+1. 📋 **README.md** (this file) - Project overview and setup
+2. 🚀 **[QUICK_START.md](QUICK_START.md)** - 4-command workflow to reproduce all results
+3. ✅ **[FINAL_COMPLETION_SUMMARY.md](FINAL_COMPLETION_SUMMARY.md)** - Complete requirements coverage, project structure, and status
 
-### 📚 [**DOCUMENTATION_GUIDE.md**](DOCUMENTATION_GUIDE.md) ← START HERE
-Complete navigation guide with recommended reading order for all roles
+**Supporting Documentation**:
+- 📊 **[docs/RESULTS.md](docs/RESULTS.md)** - Comprehensive technical results and analysis
+- 📈 **[analysis/FINAL_PROJECT_SUMMARY.md](analysis/FINAL_PROJECT_SUMMARY.md)** - Executive summary
+- 🔧 **[docs/FEATURE_ENGINEERING.md](docs/FEATURE_ENGINEERING.md)** - Feature engineering details
+- 🤖 **[docs/MODEL_ARCHITECTURE_SUMMARY.md](docs/MODEL_ARCHITECTURE_SUMMARY.md)** - Model implementations
 
-### Quick Links
-- [**Final Results**](docs/RESULTS.md) - Complete analysis and findings
-- [**Executive Summary**](analysis/FINAL_PROJECT_SUMMARY.md) - Quick overview
+---
+- **[DOCUMENTATION_GUIDE.md](DOCUMENTATION_GUIDE.md)** - Complete navigation guide
+
+### Analysis & Results
+- [**docs/REPORT.md**](docs/REPORT.md) ⭐ - Professional sales analysis report (auto-generated)
+- [**docs/RESULTS.md**](docs/RESULTS.md) - Complete technical analysis
+- [**analysis/FINAL_PROJECT_SUMMARY.md**](analysis/FINAL_PROJECT_SUMMARY.md) - Executive summary
+- [**docs/references.md**](docs/references.md) - Literature citations
+
+### Technical Documentation
 - [**Project Structure**](PROJECT_STRUCTURE.md) - File organization
 - [**Model Details**](analysis/XGBOOST_TUNING_RESULTS.md) - Hyperparameter tuning
 - [**Features Guide**](docs/FEATURE_ENGINEERING.md) - All 143 features explained
 
 ---
+
+## 🚀 Complete Automated Workflow
+
+Follow the 4-command workflow in **[QUICK_START.md](QUICK_START.md)** to reproduce all results:
+
+```bash
+# 1. Run ML pipeline (feature engineering → training → evaluation)
+python scripts/run_full_pipeline.py
+
+# 2. Generate visualizations (5 professional charts)
+python scripts/generate_visualizations.py
+
+# 3. Generate professional report (with business insights)
+python scripts/generate_report.py
+
+# 4. Search literature (optional, requires internet)
+python agents/literature_search_agent.py --query "retail sales forecasting"
+```
+
+**Outputs**:
+- `data/processed/` - Processed datasets with time-based splits (validation=48 days, test=48 days)
+- `models/` - Trained XGBoost_DeepTrees model (with RandomForest fallback)
+- `results/metrics.json` - Evaluation metrics (RMSPE, RMSE, MAE, MAPE, R²)
+- `results/submission_final.csv` - Final predictions (41,088 rows)
+- `docs/figures/` - Professional visualizations (5 charts)
+- `docs/REPORT.md` - Comprehensive analysis report
+- `docs/references.md` - Literature references (if step 4 run)
+
+**For complete details**, see:
+- **[QUICK_START.md](QUICK_START.md)** - Complete workflow guide with troubleshooting
+- **[FINAL_COMPLETION_SUMMARY.md](FINAL_COMPLETION_SUMMARY.md)** - Requirements coverage and project structure
+
+

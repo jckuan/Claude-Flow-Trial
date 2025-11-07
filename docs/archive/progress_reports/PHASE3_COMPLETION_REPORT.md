@@ -3,120 +3,17 @@
 **Agent**: ModelArchitect  
 **Date**: November 6, 2025  
 **Status**: ✅ COMPLETE  
-**Task ID**: phase3-modeling
+# ARCHIVED: Phase 3 - Model Architecture (moved to docs/archive/removed_docs)
 
-## Summary
+This file has been archived and a preserved copy exists at `docs/archive/removed_docs/PHASE3_COMPLETION_REPORT.md`.
 
-Successfully implemented a comprehensive machine learning model architecture for Rossmann sales prediction, including 26+ model variants, training infrastructure, evaluation framework, and complete documentation.
+Rationale: the project's primary documentation now centralizes results and status in `docs/RESULTS.md` and `analysis/FINAL_PROJECT_SUMMARY.md`. The archived copy is kept for historical reference.
 
-## Deliverables Completed
+See also:
+- `docs/MODEL_ARCHITECTURE_SUMMARY.md` — up-to-date model documentation
+- `analysis/XGBOOST_TUNING_RESULTS.md` — hyperparameter tuning details
 
-### 1. Model Implementations (2,124 lines of code)
-
-#### File: `src/models/baseline.py` (6.7 KB)
-- 5 baseline model implementations
-- MeanBaseline, MedianBaseline, SimpleLinearBaseline
-- StoreAverageBaseline, DayOfWeekBaseline
-- Sklearn-compatible interfaces
-
-#### File: `src/models/linear_models.py` (7.8 KB)
-- 11 linear model variants
-- LinearRegression, Ridge (4 α values)
-- Lasso (3 α values), ElasticNet (3 configs)
-- Hyperparameter grids included
-
-#### File: `src/models/tree_models.py` (11 KB)
-- 8 tree-based model implementations
-- Random Forest (2 configs)
-- XGBoost (3 configs, optional dependency)
-- LightGBM (3 configs, optional dependency)
-- Hyperparameter grids for tuning
-
-#### File: `src/models/ensemble_models.py` (11 KB)
-- 3 ensemble strategies
-- WeightedEnsemble (uniform, performance, custom)
-- StackingEnsemble (with meta-learner)
-- BlendingEnsemble (holdout-based)
-
-#### File: `src/models/trainer.py` (15 KB)
-- Complete training pipeline
-- Time-series aware cross-validation
-- Multiple model batch training
-- Hyperparameter tuning (Grid/Random)
-- Model persistence with metadata
-- Experiment tracking
-
-#### File: `src/models/evaluator.py` (14 KB)
-- Comprehensive evaluation framework
-- Metrics: RMSE, MAE, MAPE, R²
-- 6 visualization types
-- Feature importance analysis
-- Automated report generation
-
-#### File: `src/models/__init__.py` (771 B)
-- Clean package exports
-- Version management
-
-### 2. Main Training Script
-
-#### File: `src/train_models.py` (executable)
-- Orchestrates full training pipeline
-- 4-phase training (baseline → linear → tree → ensemble)
-- Automatic best model selection
-- Visualization generation
-- Model saving with metadata
-
-### 3. Documentation (3 files, ~1,000 lines)
-
-#### `src/models/README.md` (10 KB)
-- Complete module documentation
-- Usage examples for all models
-- API reference
-- Best practices guide
-- Troubleshooting section
-
-#### `docs/model_comparison.md`
-- Model architecture strategy
-- Training methodology
-- Expected performance benchmarks
-- Feature requirements
-- Cross-validation approach
-
-#### `docs/MODEL_ARCHITECTURE_SUMMARY.md`
-- Executive summary
-- Deliverables overview
-- Integration guide
-- Performance optimization tips
-
-### 4. Configuration
-
-#### `requirements.txt`
-- Core dependencies: numpy, pandas, scikit-learn
-- Optional: xgboost, lightgbm
-- Visualization: matplotlib, seaborn
-- Complete version specifications
-
-## Technical Specifications
-
-### Model Count: 26+ variants
-- 5 Baseline models
-- 11 Linear models  
-- 8 Tree-based models
-- 2+ Ensemble strategies
-
-### Code Metrics
-- Total lines: 2,124 (Python code)
-- Documentation: ~1,000 lines (Markdown)
-- Files created: 10
-- Modules: 7
-
-### Architecture Highlights
-- Sklearn-compatible interfaces throughout
-- Type hints and comprehensive docstrings
-- Error handling and input validation
-- Parallel processing support
-- Reproducible with random_state=42
-
+*** End Patch
 ## Performance Expectations
 
 | Model Type | RMSE Range | Training Time | Memory |
